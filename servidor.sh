@@ -43,7 +43,9 @@ fi
 
 echo "OK_FILE_NAME" | nc $IP_CLIENT $PORT
 
+echo "(8) LISTEN"
 
+nc -l $PORT >/home/enti/inbox/$FILE_NAME
 
 
 

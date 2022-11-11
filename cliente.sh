@@ -22,12 +22,21 @@ then
 fi
 echo "(5) SEND MSG: File"
 
-echo "FILE_NAME vaca.vaca" | nc $SERVER_AD $PORT
+FILENAME="vaca.vaca"
+
+echo "FILE_NAME $FILENAME" | nc $SERVER_AD $PORT
 
 echo "(6)LISTEN"
 
 MSG=`nc -l $PORT`
 
+if [ "$MSG" != "OK_FILE_NAME" ]
+then
+	echo "ERROR 2: Nombre de archivo incorrecto"
+	
+	exit 1 
+fi
 
+cat /home/enti/vacas/$FILENAME | nc $SERVER_AD $PORcat 
 
 exit 0
