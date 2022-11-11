@@ -37,6 +37,6 @@ then
 	exit 1 
 fi
 
-cat /home/enti/vacas/$FILENAME | nc $SERVER_AD $PORcat 
+cat /home/enti/vacas/$FILENAME | nc $SERVER_AD $PORT 
 
 exit 0
