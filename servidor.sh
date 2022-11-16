@@ -11,8 +11,18 @@ MSG=`nc -l $PORT`
 
 HANDSHAKE=`echo $MSG | cut -d " " -f 1`
 IP_CLIENT=`echo $MSG | cut -d " " -f 2`
+IP_CLIENT_MD5=`echo $MSG | cut -d " " -f 3`
 
 echo "(3) SEND MSG: Comprobacion"
+
+IP_MD5=`echo $IP_CLIENT | md5sum | cut -d " " -f 1`
+
+if [ "$IP_CLIENT_MD5" != "$IP_MD5" ]
+then
+	echo "ERROR 1: IP Clinete incorrecta"
+	exit 1
+fi
+
 if [ "$HANDSHAKE" != "HOLI_TURIP" ]
 then
 	echo "ERROR 1: Handshake incorrecto"

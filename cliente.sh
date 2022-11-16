@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+IP_LOCAL="127.0.0.1"
 PORT="2223"
 SERVER_AD="localhost" 
 
@@ -8,7 +10,9 @@ echo "Cliente"
 
 echo "(1) SEND MSG: HOLI_TURIP"
 
-echo "HOLI_TURIP 127.0.0.1" | nc $SERVER_AD $PORT
+IP_MD5=`echo $IP_LOCAL | md5sum | cut -d " " -f 1`  
+
+echo "HOLI_TURIP $IP_LOCAL $IP_MD5" | nc $SERVER_AD $PORT
 
 echo "(2) LISTEN: Comprovacion handshake"
 
