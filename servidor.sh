@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 PORT="2223"
@@ -57,6 +56,22 @@ echo "(8) LISTEN"
 
 nc -l $PORT >/home/enti/inbox/$FILE_NAME
 
+echo "(10) LISTEN "
+
+MSG=`nc -l $PORT`
+
+if [ "@MSG" = " " ]
+then
+	echo "KO_FLIE_NUM" | nc $IP_CLIENT $PROT
+	exit 1
+fi
+
+echo "Ok_FILE_NUM" | nc $IP_CLIENT $PORT
+
+for i in {1. .$MSG}
+do
+	echo `nc -l $PORT` > archivo$i
+done
 
 
-exit 0
+exit 0 
